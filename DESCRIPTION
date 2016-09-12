@@ -1,0 +1,23 @@
+Package: uncanny
+Type: Package
+Title: researching the uncanny valley phenomenon
+Version: 0.1.0
+Author: Martin Schmettow
+Maintainer: Martin Schmettow <schmettow@web.de>
+Description: The uncanny valley phenomenon is a disruption in
+    emotional judgement of faces on the humano-mechanical spectrum.
+    Faces that are almost human-like cause the strongest aversion.
+    This package provides simulation functions for the cognitive
+    process under the theory of category confusion.
+LazyData: TRUE
+License: GPL-3
+Depends:
+    dplyr,
+    tidyr,
+    stringr,
+    plyr,
+    ggplot2,
+    shiny,
+    mascutils
+
+RoxygenNote: 5.0.1
