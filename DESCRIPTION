@@ -8,16 +8,8 @@ Description: The uncanny valley phenomenon is a disruption in
     emotional judgement of faces on the humano-mechanical spectrum.
     Faces that are almost human-like cause the strongest aversion.
     This package provides simulation functions for the cognitive
-    process under the theory of category confusion.
+    process under the theory of category confusion, as well as 
+    helper functions for polynomial regression.
 LazyData: TRUE
 License: GPL-3
-Depends:
-    dplyr,
-    tidyr,
-    stringr,
-    plyr,
-    ggplot2,
-    shiny,
-    mascutils
-
-RoxygenNote: 5.0.1
+RoxygenNote: 7.0.2

@@ -28,17 +28,17 @@
 #' @import dplyr
 #' @import tidyr
 #' @import stringr
-#' @import mascutils
+#' @import shiny
 
 uv_process_catconf = function(Part = 1,
                               Stim = 1,
                               stim_humLik = .5, # -1,1
-                              cond_prtime = 1000,
-                              part_info_uptake = 1,
-                              part_reluctance = 5,
-                              part_shock = 1,
-                              part_pace = 25,
-                              part_cert_face = 2,
+                              cond_prtime = 1000, ## presentation time
+                              part_info_uptake = 1,## rate of visual perception
+                              part_reluctance = 5,## reluctance to acknowledge faulty classification
+                              part_shock = 1,     ## shock units. how strong is the embarassement
+                              part_pace = 25,     ## clock
+                              part_cert_face = 2, ## tendency to recognize faces easier
                               full_table = T,
                               resp_only = F
 ){
@@ -156,7 +156,8 @@ plot_response <-  function(D)
 {    D %>%
   ggplot(aes(x = stim_humLik, y = emotion)) +
   geom_point(aes(col = as.factor(process_type))) +
-  geom_smooth(se = F, span = .5) +
+  geom_smooth(method="lm", se=TRUE,
+              formula=y ~ poly(x, 3, raw=TRUE)) +
   facet_grid(~cond_prtime)
 }
 
