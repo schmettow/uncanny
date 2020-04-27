@@ -1,7 +1,7 @@
 #' Derive the local minimum of a third degree polynomial
 #'
-#' Takes four polynomial parameters as input and derives the local minimum
-#' if it exists.
+#' Takes four polynomial parameters as input and derives the
+#' local minimum if it exists.
 #'
 #' @param coef polynomial coefficients
 #' @param ...
@@ -22,7 +22,7 @@ trough <- function (coef, ...) {
 #' @export
 
 trough.numeric <-
-  function(coef = c(-.2, -.5, .2, .7)) {
+  function(coef) {
     if(length(coef) != 4) stop("the uncanny valley trough polynomial requires exactly four parameters")
     poly <- polynom::polynomial(coef)
     dpoly <- deriv(poly)
@@ -46,6 +46,60 @@ trough.matrix <-
 #' @export
 
 trough.data.frame <- function(coef) trough(as.matrix(coef))
+
+
+
+
+#' Derive the local maximum of a third degree polynomial
+#'
+#' Takes four polynomial parameters as input and derives the
+#' local minimum if it exists.
+#'
+#' @param coef polynomial coefficients
+#' @param ...
+#'
+#' @return position of the local maximum, NA if it does not exist
+#' @export
+#'
+#' @examples
+#'
+#' shoulder(c(-1, -4, 3, 1))
+
+
+
+shoulder <- function (coef, ...) {
+  UseMethod("shoulder", coef)
+}
+
+#' @rdname shoulder
+#' @export
+
+shoulder.numeric <-
+  function(coef) {
+    if(length(coef) != 4) stop("the uncanny valley shoulder polynomial requires exactly four parameters")
+    poly <- polynom::polynomial(coef)
+    dpoly <- deriv(poly)
+    ddpoly <- deriv(dpoly)
+    points <- solve(dpoly)
+    pt_dir <- as.function(ddpoly)(points)
+    if(!(any(is.complex(pt_dir)))){
+      points[pt_dir < 0]
+    }else{
+      NA
+    }
+  }
+
+#' @rdname shoulder
+#' @export
+
+shoulder.matrix <-
+  function(coef, ...) plyr::aaply(as.matrix(coef), .margins = 1, shoulder)
+
+#' @rdname shoulder
+#' @export
+
+shoulder.data.frame <- function(coef) shoulder(as.matrix(coef))
+
 
 
 # as.function(polynomial(c(-1, -2, -3, -4)))

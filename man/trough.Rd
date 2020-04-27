@@ -9,7 +9,7 @@
 \usage{
 trough(coef, ...)
 
-\method{trough}{numeric}(coef = c(-0.2, -0.5, 0.2, 0.7))
+\method{trough}{numeric}(coef)
 
 \method{trough}{matrix}(coef, ...)
 
@@ -24,8 +24,8 @@ trough(coef, ...)
 position of the local minimum, NA if it does not exist
 }
 \description{
-Takes four polynomial parameters as input and derives the local minimum
-if it exists.
+Takes four polynomial parameters as input and derives the
+local minimum if it exists.
 }
 \examples{
 
