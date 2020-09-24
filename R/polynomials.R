@@ -207,6 +207,7 @@ par.poly <- function(P){
     P_out
 }
 
+
 # trough.tbl_post <-
 #   function(P){
 #     P <- as_data_frame(P_1)

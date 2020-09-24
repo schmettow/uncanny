@@ -6,7 +6,9 @@
 \alias{uv_explorer_ui}
 \alias{uv_explorer_server}
 \title{Interactive uncanny valley explorer}
-\format{An object of class \code{shiny.tag.list} (inherits from \code{list}) of length 3.}
+\format{
+An object of class \code{shiny.tag.list} (inherits from \code{list}) of length 3.
+}
 \usage{
 uv_explorer()
 
